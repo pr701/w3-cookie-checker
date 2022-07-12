@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header files\proto">
+      <UniqueIdentifier>{ee356e78-289e-4ff3-8a17-f2b5b41d7d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\client">
+      <UniqueIdentifier>{535ee9d3-0b5d-464a-8728-e01372de0007}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="w3-cookie-checker.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\authentication.pb.cc">
+      <Filter>Header files\proto</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="proto\authentication.pb.h">
+      <Filter>Header files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\authentication_utils.h">
+      <Filter>Header files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="client\client_hwid.h">
+      <Filter>Header files\client</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="proto\authentication.proto">
+      <Filter>Header files\proto</Filter>
+    </None>
+  </ItemGroup>
+</Project>

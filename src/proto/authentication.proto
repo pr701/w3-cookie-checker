@@ -1,0 +1,28 @@
+/* reverse engineered .proto
+ * pr, 2022 */
+
+syntax = "proto2";
+
+package classic.protocol.v1.authentication;
+
+option optimize_for = LITE_RUNTIME;
+
+message AuthSessionResponse {
+	repeated string entitlements = 1;
+	required int64 account_id = 4;
+	required int64 id = 5;
+	required int64 not_valid_after = 6;
+	required int64 game_id = 8;
+	optional string locale = 9;
+}
+
+message OfflineCookie {
+	required string proto_name = 1;
+	required string proto_payload = 2;
+	required string signature = 3;
+	required int64 game_id = 4;
+}
+
+message OfflineCookies {
+	repeated OfflineCookie cookie = 5;
+}
