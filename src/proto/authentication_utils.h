@@ -31,6 +31,11 @@
 
 typedef Botan::secure_vector<uint8_t> bytes_t;
 
+namespace detail
+{
+    const char* k_d2r_connection = "classic.protocol.v1.d2r_connection.AuthSessionResponse";
+}
+
 namespace classic {
 namespace protocol {
 namespace v1 {
@@ -38,6 +43,7 @@ namespace authentication {
 
     enum app_id
     {
+        D2 = 'OSI',
         S1 = 'S1',
         W3 = 'W3',
     };
@@ -73,8 +79,16 @@ namespace authentication {
     inline decrypt_error decrypt_cookie(const OfflineCookie& cookie, const std::string& hwid,
         AuthSessionResponse& response)
     {
-        if (response.GetTypeName().compare(cookie.proto_name()))
-            return decrypt_error::mismatched_protobuf_types;
+        if (cookie.game_id() == app_id::D2)
+        {
+            if (cookie.proto_name().compare(std::string(detail::k_d2r_connection)))
+                return decrypt_error::mismatched_protobuf_types;
+        }
+        else
+        {
+            if (response.GetTypeName().compare(cookie.proto_name()))
+                return decrypt_error::mismatched_protobuf_types;
+        }
 
         bytes_t payload;
         try
@@ -97,6 +111,8 @@ namespace authentication {
     {
         switch (game_id)
         {
+        case app_id::D2:
+            return "Diablo II: Resurrected";
         case app_id::S1:
             return "StarCraft: Remastered";
         case app_id::W3:
